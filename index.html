@@ -120,7 +120,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/NET/" style="font-size: 10px;">.NET</a>
+                        
                     </div>
                 </section>
                 
@@ -173,109 +173,6 @@
     </div>
 </nav>
       <div class="body-wrap">
-  
-    <article id="post-NET软件框架介绍" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/09/18/NET软件框架介绍/" class="article-date">
-      <time datetime="2018-09-18T01:05:40.000Z" itemprop="datePublished">2018-09-18</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/18/NET软件框架介绍/">.NET软件框架介绍</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>最近公司开始做新的项目，需要对软件框架进行选择。现在整理了一些常用的.NET框架，用于以后的工作和学习。</p>
-<h1 id="IOC容器框架"><a href="#IOC容器框架" class="headerlink" title="IOC容器框架"></a>IOC容器框架</h1><h2 id="Untiy框架"><a href="#Untiy框架" class="headerlink" title="Untiy框架"></a>Untiy框架</h2><p>Unity 是一个轻量级、可扩展的依赖注入容器（Dependency Injection Container），其支持截取、构造函数注入、属性注入和方法调用注入等。可以利用 Unity 通过多种方式进行应用程序组件间的解耦，从而最大化组件的一致性，并简化设计、实施、测试和管理等。</p>
-<p>Unity 提供了所有常见的依赖注入机制，包括注册类型映射、注册对象实例、解决依赖、管理对象的生存期，为参数的构造函数和方法注入依赖对象，和解析对象的属性值。 此外，Unity 拥有很好的可扩展性。可以通过添加容器扩展来改变容器的行为或增加新的功能。例如在 Unity 中拦截功能，向被拦截对象添加各种策略即是通过容器扩展实现。</p>
-<h2 id="MEF（Managed-Extensibility-Framework）"><a href="#MEF（Managed-Extensibility-Framework）" class="headerlink" title="MEF（Managed Extensibility Framework）"></a>MEF（Managed Extensibility Framework）</h2><p>MEF 是一个用于创建可扩展的轻型应用程序的库。 应用程序开发人员可利用该库发现并使用扩展，而无需进行配置。 扩展开发人员还可以利用该库轻松地封装代码，避免生成脆弱的硬依赖项。 通过 MEF，不仅可以在应用程序内重用扩展，还可以在应用程序之间重用扩展。</p>
-<h3 id="工作原理："><a href="#工作原理：" class="headerlink" title="工作原理："></a>工作原理：</h3><p>MEF不同于显示注册可用组件的做法，在MEF中组件被视为部件。这些部件主要有“导入”Import部件和“导出”Export部件，此外MEF提供了一个组合容器ComposeContainer，容器会发现指定Catalog的导入导出部件，并按Contract协定、Metadata元数据等对导入和导出部件进行组合。</p>
-<p>通过MEF，应用程序可以通过部件的元数据里发现并检查部件，而不用实例化部件，或者甚至不用加载部件的程序集。因此，没有必要仔细指定应何时以及如何加载扩展。使用MEF编写的可扩展应用程序会声明一个可由扩展组件填充的导入，而且还可能会声明导出，以便向扩展公开应用程序服务。每个扩展组件都会声明一个导出，而且还可能会声明导入。通过这种方式，扩展组件本身是自动扩展的。</p>
-<p>Export（导出）：Export也就是我们常说的组件或者模块或者服务或者插件，它是部件向容器中的其他部件提供的一个值、功能或服务等。</p>
-<p>Import（导入）：Import，即扩展点，是组件，服务，插件等接入系统的窗口，是部件向要通过导出满足的容器提出的要求，MEF支持若干导入类型，其中包括动态导入、延迟导入、必备导入和可选导入。</p>
-<p>Contract（协定）：是Export和Import的一种约定，一种协议，只有Contract相匹配的Import和Export部件才能组装成功。</p>
-<p>Catalog（目录）：为了发现可用于组合容器的部件，组合容器将使用“Catalog”。目录是一个对象，通过发现可用部件，MEF提供了用于从提供的类型、程序集或磁盘路径获取Catalog。</p>
-<p>Compose（组合）：在MEF中，容器将导入于导出匹配的这一过程我们称之为组合，部件由MEF组合，MEF将部件实例化，然后使导出与导入程序相匹配。</p>
-<h2 id="Autofac"><a href="#Autofac" class="headerlink" title="Autofac"></a>Autofac</h2><p>Autofac 是一款适用于Microsoft .NET 4.5IoC 容器. 它可以管理类之间的依赖关系从而使 应用在规模及复杂性增长的情况下依然可以轻易地修改 . 通过将常规.net类当做组件处理实现 .</p>
-<p>主要特性：</p>
-<ol>
-<li><p>灵活的组件实例化：Autofac支持自动装配，给定的组件类型Autofac自动选择使用构造函数注入或者属性注入，Autofac还 可以基于lambda表达式创建实例，这使得容器非常灵活，很容易和其他的组件集成。</p>
-</li>
-<li><p>资源管理的可视性：基于依赖注入容器构建的应用程序的动态性，意味着什么时候应该处理那些资源有点困难。Autofac通过跟踪特定作用域内的实例和依赖来解决这个问题（DeterministicDisposal）。</p>
-</li>
-<li><p>Autofac的设计上非常务实，这方面更多是为容器的使用者考虑:</p>
-<p>组件侵入性为零：组件不需要去引用Autofac。</p>
-<ul>
-<li>灵活的模块化系统：通过模块化组织你的程序，应用程序不用纠缠于复 杂的XML配置系统或者是配置参数。</li>
-<li>自动装配：可以是用lambda表达式注册你的组件，autofac会根据需要选择构造函数或者属 性注入</li>
-<li>XML配置文件的支持：XML配置文件过度使用时很丑陋，但是在发布的时候通常非常有用</li>
-<li>组件的多服务支持：许 多设计师喜欢使用细粒度的接口来控制依赖 ， autofac允许一个组件提供多个服务</li>
-</ul>
-</li>
-</ol>
-<h1 id="数据库框架"><a href="#数据库框架" class="headerlink" title="数据库框架"></a>数据库框架</h1><h2 id="Nhibernate"><a href="#Nhibernate" class="headerlink" title="Nhibernate"></a>Nhibernate</h2><p>NHibernate是一个面向.NET环境的对象/关系数据库映射工具。对象/关系数据库映射（object/relational mapping，ORM）这个术语表示一种技术，用来把对象模型表示的对象映射到基于SQL的关系模型数据结构中去。</p>
-<p>Nhibernate架构：</p>
-<p><img src="F:\MD图像备份\微信图片_20180918091138.png" alt="微信图片_20180918091138"></p>
-<ul>
-<li>NHibernate在应用程序中充当数据访问层</li>
-<li>将关系数据库映射成应用程序中的持久化对象</li>
-<li>使用app.config作为数据库配置文件(数据库连接，日志等)</li>
-<li>使用xml mappings文件作为数据库映射配置文件（也有支持其他映射方法：属性映射、Fluent Mapping、Auto-Mapping）</li>
-</ul>
-<h2 id="EF-Entity-Framework"><a href="#EF-Entity-Framework" class="headerlink" title="EF(Entity Framework)"></a>EF(Entity Framework)</h2><p>Entity Framework是以ADO.NET为基础，面向数据的“实体框架”。</p>
-<p>它利用了抽象化数据结构的方式，将每个数据库对象都转换成应用程序对象 (entity)，数据字段都转换为属性 (property)，关系则转换为结合属性 (association)，让数据库的 E/R 模型完全的转成对象模型，如此让程序设计师能用最熟悉的编程语言来调用访问。</p>
-<p><img src="F:\MD图像备份\微信图片_20180918091143.png" alt="微信图片_20180918091143"></p>
-<h1 id="日志系统框架"><a href="#日志系统框架" class="headerlink" title="日志系统框架"></a>日志系统框架</h1><h2 id="Log4Net"><a href="#Log4Net" class="headerlink" title="Log4Net"></a>Log4Net</h2><p>　log4net是一个功能著名的开源日志记录组件。利用log4net可以方便地将日志信息记录到文件、控制台、Windows事件日志和数据库（包括MS Server，Access，Oracle9i，Oracle8i，DB2，SQLite）中。并且我们还可以记载控制要记载的日志级别，可以记载的日志类别包括：FATAL（致命错误）、ERROR（一般错误）、WARN（警告）、INFO（一般信息）、DEBUG（调试信息）。</p>
-<h2 id="NLog"><a href="#NLog" class="headerlink" title="NLog"></a>NLog</h2><p>  NLog是一个基于.NET平台编写的类库，我们可以使用NLog在应用程序中添加极为完善的跟踪调试代码。</p>
-<p>  NLog是一个简单灵活的.NET日志记录类库。通过使用NLog，我们可以在任何一种.NET语言中输出带有上下文的       （contextual information）调试诊断信息，根据喜好配置其表现样式之后发送到一个或多个输出目标（target）中。</p>
-<h2 id="Log4Net与NLog的对比"><a href="#Log4Net与NLog的对比" class="headerlink" title="Log4Net与NLog的对比"></a>Log4Net与NLog的对比</h2><p><img src="F:\MD图像备份\微信图片_20180918091146-1537233161669.png" alt="微信图片_20180918091146"></p>
-<h1 id="WAF-Win-Application-Framework"><a href="#WAF-Win-Application-Framework" class="headerlink" title="WAF(Win Application Framework)"></a>WAF(Win Application Framework)</h1><p>WAF是一个用于构建良好架构的WPF应用的轻量级框架。</p>
-
-      
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NET/">.NET</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
   
     <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
   
